@@ -8,7 +8,7 @@ You can stop looking at this now.
 
 Please.
 """
-
+clicks = 0
 st.write("This is some text made using Python.")
 
 adjective = st.text_input("Type in an adjective")
@@ -19,4 +19,5 @@ st.write("I just gave a " + noun + " twenty " + adjective + " dollars and he " +
 
 pressed = st.button("Press me!")
 if pressed:
-    st.write("Why did you do that?")
+    clicks+1
+    st.write("Ouch!^" + clicks)
