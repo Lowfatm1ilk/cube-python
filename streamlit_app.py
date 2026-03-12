@@ -19,5 +19,5 @@ st.write("I just gave a " + noun + " twenty " + adjective + " dollars and he " +
 
 pressed = st.button("Press me!")
 if pressed:
-    clicks+1
+    clicks+=1
     st.write("Ouch!^" + clicks)
