@@ -1,4 +1,5 @@
 import streamlit as st
+from openai import OpenAI
 
 """
 # Hello World, Streamlit!
@@ -8,6 +9,8 @@ You can stop looking at this now.
 
 Please.
 """
+
+client = OpenAI(api_key=st.secrets['json'] )
 
 with st.form("my_form"):
     fav_color = st.selectbox(
