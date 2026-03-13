@@ -28,8 +28,6 @@ with st.form("my_form"):
     if submitted:
         st.write("It's interesting that you like " + fav_color + ".")
         st.write("You say it's because:")
-        st.write("""
-        ```
-        reason
-        ```
-        """.replace("reason", reason))
+        st.write(f"""
+        {reason}
+        """)
