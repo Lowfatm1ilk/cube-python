@@ -1,17 +1,19 @@
 import streamlit as st
 from openai import OpenAI
 
+system_prompt = """
+You are gonna be a translator for thuser and you will translate their message into a language of their choice.
 """
-# Hello World, Streamlit!
-
-This is a website to demonstrate Streamlit's API.
-You can stop looking at this now.
-
-Please.
-"""
-
 client = OpenAI(api_key=st.secrets['json'] )
+chat_history = [
+    {"role": "system", "content": system_prompt},
+    {"role":"user","content":'the language'}
 
+
+]
+
+
+    
 with st.form("my_form"):
     LanguageChoice = st.selectbox(
         "What language do you want to translate the message into?",
@@ -26,12 +28,19 @@ with st.form("my_form"):
         ]
     )
     
-    reason = st.text_area("Type the message.")
+    message = st.text_area("Type the message.")
 
     submitted = st.form_submit_button("Submit")
     if submitted:
-        st.write("It's interesting that you like " + LanguageChoice + ".")
-        st.write("You say it's because:")
-        st.write(f"""
-        {reason}
-        """)
+        chat_history.append(
+        {"role": "user", "content": LanguageChoice + message})
+
+        response = client.chat.completions.create(
+            model='gpt-4o',
+            messages=chat_history
+        )
+
+        st.write(response.choices[0].message.content)
+
+
+        
