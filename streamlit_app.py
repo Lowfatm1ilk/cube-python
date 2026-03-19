@@ -33,7 +33,7 @@ with st.form("my_form"):
     submitted = st.form_submit_button("Submit")
     if submitted:
         chat_history.append(
-        {"role": "user", "content": LanguageChoice + message})
+        {"role": "user", "content": 'this is the language to translate to: ' + LanguageChoice + "this is the message to translate: respond with this message in the language chosen:  " + message})
 
         response = client.chat.completions.create(
             model='gpt-4o',
