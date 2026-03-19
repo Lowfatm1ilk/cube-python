@@ -24,7 +24,7 @@ with st.form("my_form"):
             "Japanese",
             "Koreon",
             "German",
-            "Indian"
+            "Hindi"
         ]
     )
     
