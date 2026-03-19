@@ -13,23 +13,24 @@ Please.
 client = OpenAI(api_key=st.secrets['json'] )
 
 with st.form("my_form"):
-    fav_color = st.selectbox(
-        "What's your favorite color?",
+    LanguageChoice = st.selectbox(
+        "What language do you want to translate the message into?",
         [
-            "Red",
-            "Orange",
-            "Yellow",
-            "Green",
-            "Blue",
-            "Purple"
+            "English",
+            "Chinese",
+            "Spanish",
+            "Japanese",
+            "Koreon",
+            "German",
+            "Indian"
         ]
     )
     
-    reason = st.text_area("Talk about why that's your favorite color.")
+    reason = st.text_area("Type the message.")
 
     submitted = st.form_submit_button("Submit")
     if submitted:
-        st.write("It's interesting that you like " + fav_color + ".")
+        st.write("It's interesting that you like " + LanguageChoice + ".")
         st.write("You say it's because:")
         st.write(f"""
         {reason}
